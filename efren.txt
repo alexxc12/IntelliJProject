@@ -1,0 +1,251 @@
+public class OrdenacionIntercambio {
+
+    // Método para ordenar el array usando el algoritmo de intercambio
+    public void ordIntercambio(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (array[i] > array[j]) {
+                    // Intercambio de elementos
+                    int aux = array[i];
+                    array[i] = array[j];
+                    array[j] = aux;
+                }
+            }
+        }
+    }
+
+    // Método para imprimir el array
+    public void imprimirArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // Método main para ejecutar el algoritmo
+    public static void main(String[] args) {
+        OrdenacionIntercambio oi = new OrdenacionIntercambio();
+        int[] array = {8, 4, 6, 2};
+
+        System.out.println("Array original:");
+        oi.imprimirArray(array);
+
+        oi.ordIntercambio(array);
+
+        System.out.println("Array ordenado:");
+        oi.imprimirArray(array);
+    }
+}
+
+
+
+
+--------------------------------------------------------
+
+
+public class ordInsercion {
+    // Método para ordenar el array usando el algoritmo de inserción
+    public void ordInsercion(int[] array) {
+        int n = array.length;
+        for (int i = 1; i < n; i++) {
+            int key = array[i];
+            int j = i - 1;
+
+            // Mueve los elementos del array que son mayores que key
+            // una posición hacia adelante
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                j = j - 1;
+            }
+            array[j + 1] = key;
+        }
+    }
+
+    // Método para imprimir el array
+    public void imprimirArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // Método main para ejecutar el algoritmo
+    public static void main(String[] args) {
+        ordInsercion oi = new ordInsercion();
+        int[] array = {12, 11, 13, 5, 6};
+
+        System.out.println("Array original:");
+        oi.imprimirArray(array);
+
+        oi.ordInsercion(array);
+
+        System.out.println("Array ordenado:");
+        oi.imprimirArray(array);
+    }
+}
+
+------------------------------------------------------
+
+public class ordSeleccion {
+        // Método para ordenar el array usando el algoritmo de selección
+    public void ordSeleccion(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            // Encuentra el índice del valor mínimo
+            int min_idx = i;
+            for (int j = i + 1; j < n; j++) {
+                if (array[j] < array[min_idx]) {
+                    min_idx = j;
+                }
+            }
+            // Intercambia el elemento mínimo con el primer elemento no ordenado
+            int aux = array[i];
+            array[i] = array[min_idx];
+            array[min_idx] = aux;
+        }
+    }
+
+    // Método para imprimir el array
+    public void imprimirArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // Método main para ejecutar el algoritmo
+    public static void main(String[] args) {
+        ordSeleccion os = new ordSeleccion();
+        int[] array = {64, 25, 12, 22, 11};
+
+        System.out.println("Array original:");
+        os.imprimirArray(array);
+
+        os.ordSeleccion(array);
+
+        System.out.println("Array ordenado:");
+        os.imprimirArray(array);
+    }
+}
+
+
+---------------------------------------------------------------------
+
+public class busquedaSecuencial {
+    // Método para buscar un elemento en el array usando búsqueda secuencial
+    public int buscar(int[] array, int n, int clave) {
+        for (int i = 0; i < n; i++) {
+            if (array[i] == clave) {
+                return i; // Elemento encontrado
+            }
+        }
+        return -1; // Elemento no encontrado
+    }
+
+    // Método para imprimir el array
+    public void imprimirArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // Método main para ejecutar el algoritmo
+    public static void main(String[] args) {
+        busquedaSecuencial bs = new busquedaSecuencial();
+        int[] array = {10, 20, 30, 40, 50};
+        int clave = 30;
+
+        System.out.println("Array:");
+        bs.imprimirArray(array);
+
+        int resultado = bs.buscar(array, array.length, clave);
+        if (resultado != -1) {
+            System.out.println("Elemento " + clave + " encontrado en la posición: " + resultado);
+        } else {
+            System.out.println("Elemento " + clave + " no encontrado.");
+        }
+    }
+}
+
+
+------------------------------------------------------------------
+
+
+public class busquedaBinaria {
+    // Método para buscar un elemento en el array usando búsqueda binaria
+    public int buscar(int[] array, int bajo, int alto, int clave) {
+        while (bajo <= alto) {
+            int medio = bajo + (alto - bajo) / 2;
+
+            if (array[medio] == clave) {
+                return medio; // Elemento encontrado
+            }
+            if (array[medio] < clave) {
+                bajo = medio + 1; // Buscar en la mitad superior
+            } else {
+                alto = medio - 1; // Buscar en la mitad inferior
+            }
+        }
+        return -1; // Elemento no encontrado
+    }
+
+    // Método para imprimir el array
+    public void imprimirArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // Método main para ejecutar el algoritmo
+    public static void main(String[] args) {
+        busquedaBinaria bb = new busquedaBinaria();
+        int[] array = {10, 20, 30, 40, 50}; // Asegúrate de que el array esté ordenado
+        int clave = 30;
+
+        System.out.println("Array:");
+        bb.imprimirArray(array);
+
+        int resultado = bb.buscar(array, 0, array.length - 1, clave);
+        if (resultado != -1) {
+            System.out.println("Elemento " + clave + " encontrado en la posición: " + resultado);
+        } else {
+            System.out.println("Elemento " + clave + " no encontrado.");
+        }
+    }
+}
+
+
+--------------------------------------------------------------------------
+
+Ejercicio en clase firma:
+
+    public void ordenarIntercambio(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (array[i] > array[j]) {
+                    // Intercambio de elementos
+                    int aux = array[i];
+                    array[i] = array[j];
+                    array[j] = aux;
+                }
+            }
+        }
+        return array;
+    }
+
+
+Ejercicio en clase firma:
+
+    // Método para buscar un elemento en el array usando búsqueda secuencial
+    public int buscar(int[] array, int n, int clave) {
+        for (int i = 0; i < n; i++) {
+            if (array[i] == clave) {
+                return i; // Elemento encontrado
+            }
+        }
+        return -1; // Elemento no encontrado
+    }
